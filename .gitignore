@@ -1,1 +1,6 @@
-/.metadata/
+/bin/
+/target/
+.classpath
+.project
+/.settings
+/persistence.xml
