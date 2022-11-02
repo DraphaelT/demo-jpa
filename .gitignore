@@ -3,4 +3,4 @@
 .classpath
 .project
 /.settings
-/persistence.xml
+/src/main/resources/
