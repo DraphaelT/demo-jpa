@@ -10,6 +10,7 @@ public class ConnexionJpa {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		//TP1
 			EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("recensement");
 			EntityManager em = entityManagerFactory.createEntityManager();
 			
@@ -24,6 +25,17 @@ public class ConnexionJpa {
 			region1.setNom("Corse");
 			em.persist(region1);
 			transaction.commit();
+			
+		//TP2
+			
+			EntityManagerFactory entityManagerFactory2 = Persistence.createEntityManagerFactory("bibliotheque");
+			EntityManager biblio = entityManagerFactory2.createEntityManager();
+			
+			Livre livreTrouve = biblio.find(Livre.class, 1);
+			
+			if (livreTrouve != null){
+				System.out.println(livreTrouve);
+			}
 	}
 
 }
