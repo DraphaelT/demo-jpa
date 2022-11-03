@@ -7,15 +7,17 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
+/*
 
 @Entity
-@Table(name="Client")
+@Table(name="Client")*/
 public class Client {
-
+/*
 	@Id
+	@ManyToOne
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	@Column(name = "NOM", length = 255, nullable = false, unique = true)
@@ -48,5 +50,5 @@ public class Client {
 	public void setPrenom(String auteur) {
 		this.prenom = auteur;
 	}
-	
+	*/
 }

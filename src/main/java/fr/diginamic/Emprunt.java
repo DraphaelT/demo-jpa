@@ -1,5 +1,9 @@
 package fr.diginamic;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,11 +13,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
+/*
 @Entity
-@Table (name="Emprunt")
-public class Emprunt {
+@Table (name="Emprunt")*/
+public class Emprunt {/*
 	public Emprunt() {
 	}
 	
@@ -28,16 +33,16 @@ public class Emprunt {
 	@Column(name = "DELAI", length=10, nullable = false)
 	private String delai;
 	
-	@ManyToOne
-	@JoinColumn(name="ID_CLIENT")
-		
-	@ManyToMany
+	@OneToMany(mappedBy="id")
+	private Set<Client> client; 
+	
+	/*@ManyToMany
 	@JoinTable(name="compo", 
 	joinColumns= @JoinColumn(name="ID_EMP", referencedColumnName=
-	"ID"),
+	"id"),
 	inverseJoinColumns= @JoinColumn(name="ID_CLI", referencedColumnName=
-	"ID")
-	)
+	"id")
+	)private Set<Emprunt> emprunts; */
 	
-	private Client client; 
+	
 }
