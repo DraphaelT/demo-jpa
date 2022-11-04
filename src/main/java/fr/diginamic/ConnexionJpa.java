@@ -12,24 +12,27 @@ public class ConnexionJpa {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		//TP1
+		/*
 			EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("recensement");
 			EntityManager em = entityManagerFactory.createEntityManager();
 			
-			Region h = em.find(Region.class, 1);
-		
-			if (h != null){
-				System.out.println(h);
-			}
 			EntityTransaction transaction = em.getTransaction();
 			transaction.begin();
 			Region region1 = new Region();
-			region1.setNom("Corse");
+			region1.setNom("Bretagne");
 			em.persist(region1);
+			
 			transaction.commit();
+			Region h = em.find(Region.class, 1);
+		
+			if (h != null){
+				System.out.println(h.toString());
+			}
 			em.close();
 			entityManagerFactory.close();
+		 */
 		//TP2
-			
+		/*
 			EntityManagerFactory entityManagerFactory2 = Persistence.createEntityManagerFactory("bibliotheque");
 			EntityManager biblio = entityManagerFactory2.createEntityManager();
 			
@@ -40,19 +43,31 @@ public class ConnexionJpa {
 			}
 			biblio.close();
 			entityManagerFactory.close();
-			
+		*/
 		//TP3
+			
 			EntityManagerFactory entityManagerFactory3 = Persistence.createEntityManagerFactory("bibliotheque");
 			EntityManager emprunt = entityManagerFactory3.createEntityManager();
 			
-			TypedQuery<Emprunt> query2 = emprunt.createQuery("SELECT ID_LIV,livre.TITRE,ID_EMP FROM compo JOIN livre ON Emprunt.compo.ID_LIV = livre.ID WHERE ID_EMP = '1'", Emprunt.class);
-			Emprunt h2 = query2.getResultList().get(0);
+			Emprunt emp = emprunt.find(Emprunt.class, 1);
+			Livre livre = emprunt.find(Livre.class, 1);
 			
-			if (h2 != null){
-				System.out.println(h2);
+			if (emp != null){
+				System.out.println(emp.toString());
 			}
+			
+			//Demmande a la base de chercher les emprunts de ce livre
+		   for(Emprunt empr :livre.getEmprunts()) {
+			   System.out.println(empr+"\n");
+		   }
+		   System.out.println("\n");
+		   for(Livre trouv :emp.getLivres()) {
+			   System.out.println(trouv);
+		   }
+			
 			emprunt.close();
-			entityManagerFactory.close();
+			entityManagerFactory3.close();
+			
 	}
 
 }

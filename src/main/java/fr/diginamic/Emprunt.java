@@ -15,10 +15,10 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-/*
+
 @Entity
-@Table (name="Emprunt")*/
-public class Emprunt {/*
+@Table (name="Emprunt")
+public class Emprunt {
 	public Emprunt() {
 	}
 	
@@ -33,16 +33,67 @@ public class Emprunt {/*
 	@Column(name = "DELAI", length=10, nullable = false)
 	private String delai;
 	
-	@OneToMany(mappedBy="id")
-	private Set<Client> client; 
+	@ManyToOne
+	@JoinColumn(name = "ID_CLIENT")
+	private Client client;
 	
-	/*@ManyToMany
-	@JoinTable(name="compo", 
-	joinColumns= @JoinColumn(name="ID_EMP", referencedColumnName=
-	"id"),
-	inverseJoinColumns= @JoinColumn(name="ID_CLI", referencedColumnName=
-	"id")
-	)private Set<Emprunt> emprunts; */
+	//Important pour pouvoir naviguer dans la base pls facilement (IMPORTANT)
+	@ManyToMany(mappedBy = "emprunts")
+	private List<Livre> livres = new ArrayList<Livre>();
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getDateDebut() {
+		return dateDebut;
+	}
+
+	public void setDateDebut(String dateDebut) {
+		this.dateDebut = dateDebut;
+	}
+
+	public String getDateFin() {
+		return dateFin;
+	}
+
+	public void setDateFin(String dateFin) {
+		this.dateFin = dateFin;
+	}
+
+	public String getDelai() {
+		return delai;
+	}
+
+	public void setDelai(String delai) {
+		this.delai = delai;
+	}
+
+	public Client getClient() {
+		return client;
+	}
+
+	public void setClient(Client client) {
+		this.client = client;
+	}
+
+	public List<Livre> getLivres() {
+		return livres;
+	}
+
+	public void setLivres(List<Livre> livres) {
+		this.livres = livres;
+	}
+
+	@Override
+	public String toString() {
+		return "Emprunt [id=" + id + ", dateDebut=" + dateDebut + ", dateFin=" + dateFin + ", delai=" + delai
+				+ ", client=" + client;
+	} 
 	
 	
 }

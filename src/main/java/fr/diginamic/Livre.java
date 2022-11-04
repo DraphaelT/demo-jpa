@@ -1,10 +1,16 @@
 package fr.diginamic;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -18,6 +24,16 @@ public class Livre {
 	private String titre;
 	@Column(name = "AUTEUR", length = 50, nullable = false)
 	private String auteur;
+	
+	//IMPORTANT
+	@ManyToMany
+	@JoinTable(name="COMPO", 
+	joinColumns= @JoinColumn(name="ID_LIV", referencedColumnName=
+	"ID"),
+	inverseJoinColumns= @JoinColumn(name="ID_EMP", referencedColumnName=
+	"ID")
+	)private List<Emprunt> emprunts = new ArrayList<Emprunt>();
+	
 	// constructeur sans argument
 	public Livre() {
 	}
@@ -40,6 +56,10 @@ public class Livre {
 	public void setAuteur(String auteur) {
 		this.auteur = auteur;
 	}
+	public List<Emprunt> getEmprunts() {
+		return emprunts;
+	}
+
 	@Override
 	public String toString() {
 		return "Livre [id=" + id + ", titre=" + titre + ", auteur=" + auteur + "]";

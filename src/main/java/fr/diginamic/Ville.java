@@ -35,7 +35,6 @@ public class Ville {
 	};
 	
 	@Id
-	@Column(name="ID")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	@Column(name = "NOM", length = 20, nullable = false, unique = true)
@@ -58,13 +57,7 @@ public class Ville {
 	)
 	private List<Habitant> habitants = new ArrayList<Habitant>();
 	
-	public List<Habitant> getHabitants() {
-		return habitants;
-	}
-
-	public void setHabitants(List<Habitant> habitants) {
-		this.habitants = habitants;
-	}
+	
 
 	@ManyToOne
 	@JoinColumn(name = "Region")
@@ -127,6 +120,12 @@ public class Ville {
 		this.region = region;
 	}
 
+	public List<Habitant> getHabitants() {
+		return habitants;
+	}
 
+	public void setHabitants(List<Habitant> habitants) {
+		this.habitants = habitants;
+	}
 	
 }

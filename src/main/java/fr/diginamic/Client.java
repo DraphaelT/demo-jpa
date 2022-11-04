@@ -10,14 +10,13 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-/*
+
 
 @Entity
-@Table(name="Client")*/
+@Table(name="Client")
 public class Client {
-/*
+
 	@Id
-	@ManyToOne
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	@Column(name = "NOM", length = 255, nullable = false, unique = true)
@@ -26,7 +25,7 @@ public class Client {
 	private String prenom;
 	
 	@OneToMany(mappedBy="client")
-	private Set<Emprunt> chambres;
+	private Set<Emprunt> emprunts;
 	
 	// constructeur sans argument
 	public Client() {
@@ -50,5 +49,10 @@ public class Client {
 	public void setPrenom(String auteur) {
 		this.prenom = auteur;
 	}
-	*/
+	@Override
+	public String toString() {
+		return "Client [id=" + id + ", nom=" + nom + ", prenom=" + prenom;
+	}
+	
+	
 }
